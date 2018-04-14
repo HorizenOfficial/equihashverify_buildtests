@@ -2,10 +2,6 @@ FROM buildpack-deps:buster
 
 MAINTAINER cronic@zensystem.io
 
-ARG GITHUB_USER
-
-ARG GITHUB_PASS
-
 RUN groupadd --gid 1000 node \
   && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
 
@@ -73,7 +69,7 @@ RUN apt-get update \
 USER node
 
 RUN cd ~ \
-    && git clone https://$GITHUB_USER:$GITHUB_PASS@github.com/ZencashOfficial/equihashverify.git \
+    && git clone https://github.com/ZencashOfficial/equihashverify.git \
     && cd ./equihashverify \
     && npm install
 

@@ -2,10 +2,6 @@ FROM fedora:latest
 
 MAINTAINER cronic@zensystem.io
 
-ARG GITHUB_USER
-
-ARG GITHUB_PASS
-
 RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
     && yum install -y libsodium-devel boost-devel nodejs gcc-c++ make git \
     && yum clean all -y \
@@ -17,7 +13,7 @@ RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
 USER node
 
 RUN cd ~ \
-    && git clone https://$GITHUB_USER:$GITHUB_PASS@github.com/ZencashOfficial/equihashverify.git \
+    && git clone https://github.com/ZencashOfficial/equihashverify.git \
     && cd ./equihashverify \
     && npm install
 

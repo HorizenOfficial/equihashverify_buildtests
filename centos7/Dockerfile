@@ -2,10 +2,6 @@ FROM centos:7
 
 MAINTAINER cronic@zensystem.io
 
-ARG GITHUB_USER
-
-ARG GITHUB_PASS
-
 RUN yum install -y epel-release \
     && curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
     && yum install -y libsodium-devel boost-devel nodejs gcc-c++ make git \
@@ -18,7 +14,7 @@ RUN yum install -y epel-release \
 USER node
 
 RUN cd ~ \
-    && git clone https://$GITHUB_USER:$GITHUB_PASS@github.com/ZencashOfficial/equihashverify.git \
+    && git clone https://github.com/ZencashOfficial/equihashverify.git \
     && cd ./equihashverify \
     && npm install
 

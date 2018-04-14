@@ -11,8 +11,6 @@ Fedora, boost 1.64
 ```
 To build all images and run the tests:
 ```
- for folder in *; do [ -d "${folder}" ] && docker build -t equihashverify_$folder --build-arg GITHUB_USER= \
- --build-arg GITHUB_PASS= ./$folder && docker run equihashverify_$folder || break; done
+ for folder in *; do [ -d "${folder}" ] && docker build -t equihashverify_$folder ./$folder \
+ && docker run equihashverify_$folder || break; done
 ```
-
-For as long as the repository is still private you need to set `GITHUB_USER=` and `GITHUB_PASS=` (standard warnings about providing credentials on the command line apply).
